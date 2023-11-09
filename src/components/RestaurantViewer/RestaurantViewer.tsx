@@ -49,10 +49,15 @@ function RestaurantViewer({ URL }: Props) {
       const config = { method: 'DELETE' };
 
       const result = await fetchHelper(url, config);
-      console.log(result);
-      setRestaurantData(null);
+      if (result.status == 'OK') {
+        console.log(result);
+        setRestaurantData(null);
+      } else {
+        throw new Error(result.payload);
+      }
     } catch (error) {
       console.error(error);
+      alert('[-] SOMETHING WENT WRONG');
     }
   }
 
@@ -79,9 +84,15 @@ function RestaurantViewer({ URL }: Props) {
       };
 
       const result = await fetchHelper(url, config);
-      console.log(result.message);
+      if (result.status == 'OK') {
+        console.log(result);
+        setRestaurantData(null);
+      } else {
+        throw new Error(result.payload);
+      }
     } catch (error) {
       console.error(error);
+      alert('[-] SOMETHING WENT WRONG');
     }
   }
 
@@ -107,9 +118,15 @@ function RestaurantViewer({ URL }: Props) {
       };
 
       const result = await fetchHelper(url, config);
-      console.log(result.message);
+      if (result.status == 'OK') {
+        console.log(result);
+        setRestaurantData(null);
+      } else {
+        throw new Error(result.payload);
+      }
     } catch (error) {
       console.error(error);
+      alert('[-] SOMETHING WENT WRONG');
     }
   }
 
@@ -117,7 +134,7 @@ function RestaurantViewer({ URL }: Props) {
     <form
       ref={form}
       className={
-        'w-full max-w-screen-md h-full p-[1rem] flex flex-col items-start justify-start gap-[1rem] bg-white text-black overflow-x-hidden'
+        'w-full max-w-screen-md h-full p-[1rem] flex flex-col items-start justify-start gap-[1rem] bg-white text-black overflow-x-hidden rounded-md'
       }>
       <div
         className={'w-full h-fit flex flex-row items-stretch justify-between'}>
@@ -242,14 +259,14 @@ function RestaurantViewer({ URL }: Props) {
         <button
           onClick={createBtnHandler}
           className={
-            'w-fit h-fit px-[0.75rem] py-[0.5rem] text-white bg-black'
+            'w-fit h-fit px-[0.75rem] py-[0.5rem] text-white bg-green-500'
           }>
           CREATE
         </button>
         <button
           onClick={updateBtnHandler}
           className={
-            'w-fit h-fit px-[0.75rem] py-[0.5rem] text-white bg-black'
+            'w-fit h-fit px-[0.75rem] py-[0.5rem] text-white bg-yellow-500'
           }>
           UPDATE
         </button>
