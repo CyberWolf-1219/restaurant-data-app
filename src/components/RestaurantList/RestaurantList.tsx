@@ -9,7 +9,10 @@ interface Props {
 
 function RestaurantList({ restaurants, setRestaurant }: Props) {
   return (
-    <ul>
+    <ul
+      className={
+        'w-full h-full p-[1rem] flex flex-col items-stretch justify-start gap-[1rem] bg-white overflow-y-scroll rounded-md'
+      }>
       {restaurants.map((res, i) => {
         return (
           <RestaurantCard
