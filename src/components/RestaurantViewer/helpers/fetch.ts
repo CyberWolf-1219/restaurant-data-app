@@ -1,5 +1,12 @@
-export async function fetchHelper(url: string, config: RequestInit) {
-  console.log(config);
+export async function fetchHelper(
+  url: string,
+  config: RequestInit
+): Promise<{ status: 'OK'; payload: any } | { status: 'ERROR'; payload: any }> {
   const response = await fetch(url, config);
-  return await response.json();
+  const payload = await response.json();
+  if (response.ok) {
+    return { status: 'OK', payload: payload.message };
+  } else {
+    return { status: 'ERROR', payload: payload.message };
+  }
 }
