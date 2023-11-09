@@ -11,7 +11,7 @@ function ScheduleEditor({ currentSchedules }: Props) {
   return (
     <fieldset
       className={
-        'w-full h-fit p-[1rem] border-[2px] border-black overflow-x-hidden'
+        'w-full h-fit min-h-[200px] p-[1rem] border-[2px] border-black overflow-x-hidden snap-y snap-mandatory overflow-y-scroll'
       }>
       <legend>Schedule</legend>
       <ScheduleItem

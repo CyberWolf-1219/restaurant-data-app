@@ -28,7 +28,10 @@ function ScheduleItem({ day, currentSchedule }: Props) {
   }
 
   return (
-    <fieldset className={'p-[0.5rem] border-[2px] border-black'}>
+    <fieldset
+      className={
+        'w-full h-fit p-[0.5rem] border-[2px] border-black snap-start'
+      }>
       <legend>{day.toUpperCase()}</legend>
       <div className={'flex-[2]'}>
         <div
