@@ -36,7 +36,7 @@ function App() {
         };
         const result = await fetchHelper(url, config);
         if (result) {
-          setRestaurants(result.message);
+          setRestaurants(result.payload);
         }
       } catch (error) {
         console.error(error);
@@ -53,20 +53,28 @@ function App() {
   return (
     <main
       className={
-        'w-full max-w-screen-lg h-screen mx-auto flex flex-row items-stretch justify-start gap-[1rem]'
+        'w-full max-w-screen-lg h-screen p-[1rem] mx-auto flex flex-col items-stretch justify-start gap-[1rem] bg-slate-100/10 rounded-md'
       }>
-      <div className={'flex-[1] w-full h-full'}>
-        <ErrorBoundry>
-          <RestaurantList
-            restaurants={restaurants}
-            setRestaurant={setRestaurantLink}
-          />
-        </ErrorBoundry>
+      <div className={'w-full h-fit p-[2rem] bg-white text-black rounded-md'}>
+        <h1 className={'text-3xl text-center'}>RESTAURANT MANAGEMENT SYSTEM</h1>
       </div>
-      <div className={'flex-[3] w-full max-h-screen overflow-y-auto'}>
-        <ErrorBoundry>
-          <RestaurantViewer URL={previewURL} />
-        </ErrorBoundry>
+      <div
+        className={
+          'w-full h-full max-h-[80vh] flex flex-row items-stretch justify-start'
+        }>
+        <div className={'flex-[1] w-full h-full'}>
+          <ErrorBoundry>
+            <RestaurantList
+              restaurants={restaurants}
+              setRestaurant={setRestaurantLink}
+            />
+          </ErrorBoundry>
+        </div>
+        <div className={'flex-[3] w-full max-h-screen overflow-y-auto'}>
+          <ErrorBoundry>
+            <RestaurantViewer URL={previewURL} />
+          </ErrorBoundry>
+        </div>
       </div>
     </main>
   );
